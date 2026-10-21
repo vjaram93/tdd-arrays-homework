@@ -11,6 +11,7 @@
  */
 export function getFirst(array) {
   // TODO
+  return array[0];
 }
 
 /**
@@ -26,6 +27,7 @@ export function getFirst(array) {
  */
 export function getLast(array) {
   // TODO
+  return array[array.length - 1];
 }
 
 /**
@@ -43,6 +45,12 @@ export function getLast(array) {
  */
 export function getFirstLast(array) {
   // TODO
+  if (array.length === 0) {
+    return [];
+  } else if (array.length === 1) {
+    return [array[0]];
+  }
+  return [array[0], array[array.length - 1]];
 }
 
 /**
@@ -60,6 +68,13 @@ export function getFirstLast(array) {
  */
 export function sharesFirstLetter(str1, str2) {
   // TODO
+  if (str1.length === 0 && str2.length === 0) {
+    return false;
+  } else if (str1[0] === str2[0]) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -75,6 +90,11 @@ export function sharesFirstLetter(str1, str2) {
  */
 export function quintuple(numbers) {
   // TODO
+  const result = [];
+  for (let i = 0; i < numbers.length; i++) {
+    result.push(numbers[i] * 5);
+  }
+  return result;
 }
 
 /**
@@ -96,6 +116,16 @@ export function quintuple(numbers) {
  */
 export function pluralize(words) {
   // TODO
+  const plurals = [];
+
+  for (const word of words) {
+    if (word.endsWith("s")) {
+      plurals.push(word + "es");
+    } else {
+      plurals.push(word + "s");
+    }
+  }
+  return plurals;
 }
 
 /**
@@ -113,6 +143,13 @@ export function pluralize(words) {
  */
 export function countAttendance(attendance) {
   // TODO
+  let total = 0;
+  for (const student of attendance) {
+    if (student) {
+      total += 1;
+    }
+  }
+  return total;
 }
 
 /**
@@ -129,6 +166,18 @@ export function countAttendance(attendance) {
  */
 export function getLongestWord(sentence) {
   // TODO
+  if (sentence.length === 0) {
+    return null;
+  }
+
+  let longestWord = "";
+
+  for (const word of sentence) {
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    }
+  }
+  return longestWord;
 }
 
 /**
@@ -146,6 +195,7 @@ export function getLongestWord(sentence) {
  */
 export function findSong(playlist, song) {
   // TODO
+  return playlist.indexOf(song);
 }
 
 /**
@@ -163,4 +213,14 @@ export function findSong(playlist, song) {
  */
 export function findSpy(map) {
   // TODO
+  let target = "spy";
+
+  for (let i = 0; i < map.length; i++) {
+    for (let j = 0; j < map[i].length; j++) {
+      if (map[i][j] === target) {
+        return [i, j];
+      }
+    }
+  }
+  return null;
 }
